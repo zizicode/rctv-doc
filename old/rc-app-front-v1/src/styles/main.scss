@@ -1,0 +1,57 @@
+@import "./variable";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  list-style: none;
+  text-decoration: none;
+}
+
+* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-monserrat;
+}
+
+p,
+span,
+li,
+ul ol {
+  font-family: $font-inter;
+}
+
+p{
+  padding: 0 1rem 1rem 1rem !important;
+}
+
+// Frontend
+
+html, body{
+    background-color: $color-bg-component;
+    color: $color-white;
+    font-family: $font-inter;
+}
+
+
+.app_content{
+  background-color: $color-white;
+  flex: 1;
+
+
+  .header{
+    background-image: url('../assets/background.jpg');
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+// ---------------- react-responsive-carousel ----------------
+.carousel .control-arrow, .carousel .control-dots .dot {
+  background-color: #FF5733; 
+  color: #fff; 
+}

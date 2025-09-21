@@ -1,0 +1,42 @@
+@import "./colors";
+
+// Typography styles
+$font-inter: 'Inter', sans-serif;
+$font-monserrat: 'Montserrat', sans-serif;
+
+// color styles marca
+$color-white: #FFFFFF;
+$color-primary: #0A0D40;
+$color-bg-component:#050729;
+$color-secondary: #23338C;
+$color-accent1: #F2CD13;
+$color-accent2: #F28705;
+$color-accent3: #F25C05;
+
+// Colors Background Buttons Social Links
+$color-facebook:#1877F2;
+$color-youtube:#FF0000;
+$color-instagram:#C13584;
+    // Hovered Button
+    $color-facebook-hover:#0c4b9c;
+    $color-youtube-hover:#bb0909;
+    $color-instagram-hover:#a71a6a;
+
+
+// Font Size
+$small-text: 12px;
+$regular-text: 16px;
+$large-text: 20px;
+$extra-large-text: 24px;
+$heading-text: 32px;
+
+// Box Shadow
+$box-shadow-7: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+$box-shadow-5: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+// transition
+$transicionRapida: all 0.2s ease-in-out;
+$transicionLenta: 0.5s linear;
+$transicionPersonalizada: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+$transicionColor: 0.3s ease;
+$transicionOpacidad: 0.2s ease-out;

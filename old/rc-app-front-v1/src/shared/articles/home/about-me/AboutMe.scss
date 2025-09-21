@@ -1,0 +1,55 @@
+.root_AboutMe{
+    color: #333;
+
+    // Heading h2.root_AboutMe
+    .custom-heading {
+        display: flex;
+        align-items: center;
+        font-size: 24px; 
+        color: #333; 
+        padding-bottom: 30px;
+      }
+      
+      .custom-heading::before,
+      .custom-heading::after {
+        content: "";
+        flex: 1;
+        height: 2px; 
+        border-radius: 2px;
+        background: #ebeaea; 
+        margin: 0 10px;
+      }
+
+      h3{
+        width: 90%;
+        min-width: 280px;
+        text-align: center;
+        margin: auto;
+        margin-bottom: 20px;
+        font-weight: 300;
+      }
+
+      .contentImage{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+
+        img{
+            height: 100%;
+            background-position: center center;
+            background-size: cover;
+            max-height: 300px;
+        }
+      }
+
+      .contentDetails{
+        align-content: center;
+        justify-items: center;
+        align-self: center;
+      }
+}
