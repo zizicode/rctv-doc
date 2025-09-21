@@ -1,0 +1,28 @@
+.liveView {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; // Mantiene proporción automáticamente
+    background-color: #0d0d0d; // Fondo sólido cuando no hay video
+    border-radius: 12px;
+    overflow: hidden;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+}
+
+.placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: $gray-400; // Color de marca (amarillo)
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
