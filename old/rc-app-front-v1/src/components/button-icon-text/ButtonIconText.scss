@@ -1,0 +1,33 @@
+@import '../../styles/variable';
+
+
+
+.Facebook{
+    background-color: $color-facebook;
+    transition: all 0.2s linear;
+    color: white;
+
+    &:hover{
+        background-color: $color-facebook-hover;
+    }
+}
+
+.YouTube{
+    background-color: $color-youtube;
+    transition: all 0.2s linear;
+    color: white;
+
+    &:hover{
+        background-color: $color-youtube-hover;
+    }
+}
+
+.Instagram{
+    background-color: $color-instagram;
+    transition: all 0.2s linear;
+    color: white;
+
+    &:hover{
+        background-color: $color-instagram-hover;
+    }
+}

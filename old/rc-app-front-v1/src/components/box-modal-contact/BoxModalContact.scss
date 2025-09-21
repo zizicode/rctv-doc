@@ -1,0 +1,21 @@
+@import '../../styles/variable';
+
+.p{
+    background-color: $color-bg-component;
+    height: 40px;
+    cursor: pointer;
+}
+
+.buttonEmail{
+    background-color: $color-primary;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    height: calc(100% - 40px);
+    transition: all 0.2s ease;
+
+    &:hover{
+        font-size: 18px;
+    }
+}
+

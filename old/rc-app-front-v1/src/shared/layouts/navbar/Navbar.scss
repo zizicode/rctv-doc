@@ -1,0 +1,14 @@
+@import "../../../styles/variable";
+
+.Navbar-layout {
+  background-color: $color-bg-component;
+  box-shadow: $box-shadow-7;
+  transition: $transicionRapida;
+  z-index: 99999999;
+}
+
+.content-logo {
+  span {
+    font-size: $regular-text;
+  }
+}
