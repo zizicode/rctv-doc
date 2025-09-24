@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "https://server.tail406547.ts.net:3030/$1"
+        }
+    ]
+}
