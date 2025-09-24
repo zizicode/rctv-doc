@@ -2,7 +2,7 @@
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "https://server.tail406547.ts.net:3030/$1"
+            "destination": "http://server.tail406547.ts.net:3030/$1"
         }
     ]
 }
