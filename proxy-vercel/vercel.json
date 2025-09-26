@@ -1,9 +1,12 @@
 {
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "http://rctv-server.tail406547.ts.net:8443"
-        }
-    ]
-
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://server.tail406547.ts.net/api/$1"
+    },
+    {
+      "source": "/portainer/(.*)",
+      "destination": "https://server.tail406547.ts.net/portainer/$1"
+    }
+  ]
 }
