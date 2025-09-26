@@ -1,12 +1,17 @@
 {
   "rewrites": [
     {
+      "source": "/(.*)",
+      "destination": "https://rctv-server.tail406547.ts.net/api/$1"
+    },
+    {
       "source": "/api/(.*)",
-      "destination": "https://server.tail406547.ts.net/api/$1"
+      "destination": "https://rctv-server.tail406547.ts.net/api/$1"
     },
     {
       "source": "/portainer/(.*)",
-      "destination": "https://server.tail406547.ts.net/portainer/$1"
+      "destination": "https://rctv-server.tail406547.ts.net/portainer/$1"
     }
   ]
 }
+
