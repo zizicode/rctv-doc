@@ -16,6 +16,8 @@ services:
       JWT_SECRET: esamima
     volumes:
       - ./api/media:/app/media
+    networks:
+      - rc_media_net
 
 volumes:
   db_data:
