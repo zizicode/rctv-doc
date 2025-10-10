@@ -31,7 +31,7 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f9f9f9;
+  background-color: $light-background;
   animation: fadeIn 200ms ease;
 }
 
@@ -39,23 +39,25 @@ body,
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  animation: slideUp 300ms ease;
+  gap: $spacing-4;
+  animation: slideUp 300ms $transition-ease;
 }
 
 .loading-spinner {
   width: 48px;
   height: 48px;
-  border: 4px solid #ddd;
-  border-top-color: #3498db;
-  border-radius: 50%;
+  border: 4px solid $light-border;
+  border-top-color: $light-primary;
+  border-radius: $radius-full;
   animation: spin 0.8s linear infinite;
 }
 
 .loading-text {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #666;
+  margin: 0;
+  font-family: $font-family-sans;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $light-muted-foreground;
   animation: pulse 1.5s ease-in-out infinite;
 }
 
