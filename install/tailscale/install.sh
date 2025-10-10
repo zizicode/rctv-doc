@@ -14,7 +14,7 @@ sudo systemctl enable --now tailscaled
 
 # --- CONEXIÓN AUTOMÁTICA ---
 echo "🔐 Conectando con Tailscale..."
-sudo tailscale up --authkey=${TAILSCALE_AUTH_KEY} --hostname=$(hostname) --ssh
+sudo tailscale up --authkey=${TAILSCALE_AUTH_KEY} --hostname=rctv_server --ssh
 
 # --- VERIFICACIÓN ---
 echo "✅ Estado de conexión:"
