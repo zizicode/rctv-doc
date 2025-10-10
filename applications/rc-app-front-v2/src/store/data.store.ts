@@ -32,7 +32,7 @@ interface DataState {
 
 export const useDataStore = create<DataState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       data: [],
       loading: false,
       routeLoading: false,
@@ -48,10 +48,7 @@ export const useDataStore = create<DataState>()(
 
       clearPosts: () => set({ data: [] }),
 
-      fetchPosts: async (force = false) => {
-        const { data } = get()
-        if (data.length > 0 && !force) return
-
+      fetchPosts: async () => {
         set({ loading: true })
         try {
           const res = await api.get("/posts")

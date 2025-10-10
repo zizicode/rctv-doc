@@ -9,7 +9,6 @@ export default function RouteLoading() {
   const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
-    // Si no hay datos, intenta cargarlos
       fetchPosts()
 
     if (routeLoading) {
