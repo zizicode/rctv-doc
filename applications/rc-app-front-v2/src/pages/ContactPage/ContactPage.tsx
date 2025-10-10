@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ContactPage.scss";
 import { FaInstagram, FaFacebook, FaYoutube, FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ContactPage: React.FC = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -77,16 +78,16 @@ const ContactPage: React.FC = () => {
           <h2>También puedes encontrarnos en</h2>
           <ul>
             <li>
-              <FaInstagram /> <a href="https://instagram.com/" target="_blank">Instagram</a>
+              <FaInstagram /> <Link to="https://www.instagram.com/rodolfo_cordones" target="_blank">Instagram</Link>
             </li>
             <li>
-              <FaFacebook /> <a href="https://facebook.com/" target="_blank">Facebook</a>
+              <FaFacebook /> <Link to="https://www.facebook.com/RodolfoCordones?mibextid=ZbWKwL" target="_blank">Facebook</Link>
             </li>
             <li>
-              <FaYoutube /> <a href="https://youtube.com/" target="_blank">Youtube</a>
+              <FaYoutube /> <Link to="https://www.youtube.com/@rodolfocordones" target="_blank">Youtube</Link>
             </li>
             <li>
-              <FaEnvelope /> <a href="mailto:info@rodolfocordones.com">info@rodolfocordones.com</a>
+              <FaEnvelope /> <Link to="mailto:info@rodolfocordones.com">info@rodolfocordones.com</Link>
             </li>
           </ul>
         </div>

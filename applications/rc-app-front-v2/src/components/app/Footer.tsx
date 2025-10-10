@@ -40,15 +40,12 @@ export default function Footer() {
           <div className="social-links">
             {
               socialLinks.map((item, i) => (
-                <a
-                  onClick={(e) => {
-                    e.preventDefault();
-                    useLink(item.path);
-                  }}
+                <Link
+                to={item.path}
                   key={i}
                 >
                   {item.icon}
-                </a>
+                </Link>
               ))
             }
           </div>
