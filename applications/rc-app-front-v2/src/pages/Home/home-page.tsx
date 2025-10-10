@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="HomePage">
       <div className="title">
-        <h1>Blog</h1>
+        <h1>Periódico digital</h1>
         <p>
           Mantente informado con nuestros últimos artículos publicados{" "}
           <span>

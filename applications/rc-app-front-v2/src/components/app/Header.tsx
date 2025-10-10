@@ -20,9 +20,9 @@ export const navLinks = [
 ]
 
 export const socialLinks = [
-  { icon: <CgFacebook />, path: "#" },
-  { icon: <AiOutlineYoutube />, path: "#" },
-  { icon: <AiOutlineInstagram />, path: "#" },
+  { icon: <CgFacebook />, path: "https://www.facebook.com/RodolfoCordones?mibextid=ZbWKwL" },
+  { icon: <AiOutlineYoutube />, path: "https://www.youtube.com/@rodolfocordones" },
+  { icon: <AiOutlineInstagram />, path: "https://www.instagram.com/rodolfo_cordones" },
 ]
 
 export default function Header() {

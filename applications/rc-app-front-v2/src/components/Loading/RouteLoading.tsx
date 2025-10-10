@@ -4,15 +4,13 @@ import logo from "../../../public/rc-media.png"
 import "./RouteLoading.scss"
 
 export default function RouteLoading() {
-  const { routeLoading, data, fetchPosts } = useDataStore()
+  const { routeLoading, fetchPosts } = useDataStore()
   const [visible, setVisible] = useState(false)
   const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
     // Si no hay datos, intenta cargarlos
-    if (!localStorage.getItem("posts-storage") || !data) {
       fetchPosts()
-    }
 
     if (routeLoading) {
       // 👇 Llevar scroll arriba antes de mostrar loader
