@@ -1,0 +1,39 @@
+.AdBanner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+    transition: all $transition-base $ease-in-out;
+    min-height: 180px;
+  
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+  
+    &.empty {
+      background-color: $neutral-200;
+      color: $neutral-600;
+      font-size: $text-lg;
+      font-weight: $font-medium;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+  
+      .placeholder {
+        opacity: 0.7;
+      }
+  
+      &:hover {
+        background-color: $neutral-300;
+        cursor: pointer;
+      }
+    }
+  }
+  

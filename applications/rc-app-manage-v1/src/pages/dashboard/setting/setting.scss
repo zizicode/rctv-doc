@@ -1,0 +1,155 @@
+.setting-page {
+  background-color: $light-background;
+  color: $light-foreground;
+  font-family: $font-family-sans;
+  padding: $spacing-8 $spacing-4;
+  max-width: $max-width-3xl;
+  margin: 0 auto;
+
+  @include dark-mode {
+    background-color: $dark-background;
+    color: $dark-foreground;
+  }
+
+  .title-setting {
+    margin-bottom: $spacing-6;
+
+    h1 {
+      font-size: $font-size-3xl;
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-2;
+    }
+
+    p {
+      font-size: $font-size-base;
+      color: $light-muted-foreground;
+
+      @include dark-mode {
+        color: $dark-muted-foreground;
+      }
+    }
+  }
+
+  .container-setting {
+    background-color: $light-card;
+    border: 1px solid $light-border;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+    padding: $spacing-6;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-8;
+
+    @include dark-mode {
+      background-color: $dark-card;
+      border-color: $dark-border;
+    }
+  }
+
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+
+    h2 {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semibold;
+      margin-bottom: $spacing-2;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-2;
+
+      span {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $light-muted-foreground;
+
+        @include dark-mode {
+          color: $dark-muted-foreground;
+        }
+      }
+
+      input {
+        border: 1px solid $light-input;
+        background-color: $light-secondary;
+        color: $light-foreground;
+        padding: $spacing-3;
+        border-radius: $radius-md;
+        font-size: $font-size-base;
+        @include transition(border-color);
+
+        &:focus {
+          outline: none;
+          border-color: $light-ring;
+        }
+
+        &:disabled {
+          background-color: $light-muted;
+          cursor: not-allowed;
+        }
+
+        @include dark-mode {
+          background-color: $dark-secondary;
+          border-color: $dark-input;
+          color: $dark-foreground;
+
+          &:focus {
+            border-color: $dark-ring;
+          }
+        }
+      }
+    }
+
+    button {
+      align-self: flex-start;
+      background-color: $light-primary;
+      color: $light-primary-foreground;
+      border: none;
+      border-radius: $radius-md;
+      padding: $spacing-3 $spacing-5;
+      font-size: $font-size-base;
+      font-weight: $font-weight-medium;
+      cursor: pointer;
+      box-shadow: $shadow-base;
+      @include transition(background-color);
+
+      &:hover {
+        background-color: $light-foreground;
+        color: $light-background;
+      }
+
+      @include dark-mode {
+        background-color: $dark-primary;
+        color: $dark-primary-foreground;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  .divider {
+    height: 1px;
+    background-color: $light-border;
+    margin: $spacing-2 0;
+
+    @include dark-mode {
+      background-color: $dark-border;
+    }
+  }
+
+  .error-text {
+    color: $light-destructive;
+    font-weight: $font-weight-semibold;
+    text-align: center;
+    margin-top: $spacing-8;
+
+    @include dark-mode {
+      color: $dark-destructive-foreground;
+    }
+  }
+}

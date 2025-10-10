@@ -1,1 +1,0 @@
-{"root":["./src/vite-env.d.ts","./src/hooks/index.ts","./src/hooks/useposts.ts","./src/lib/supabase.ts","./src/store/index.ts","./src/store/posts.store.ts","./src/types/index.ts","./src/types/post.type.ts","./src/app.tsx","./src/main.tsx","./src/app/layout.tsx","./src/app/pages.tsx"],"version":"5.8.3"}

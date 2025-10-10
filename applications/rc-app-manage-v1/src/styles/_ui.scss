@@ -1,0 +1,709 @@
+.InputWrapper {
+    width: 100%;
+    margin-bottom: .3rem;
+
+    label {
+        display: flex;
+        flex-direction: column;
+        gap: .09rem;
+
+        &>span {
+            font-size: .7rem;
+            font-weight: 500;
+            color: $light-accent-foreground;
+        }
+
+        &>.InputProvider {
+            width: 100%;
+            max-width: 500px;
+            max-height: 30px;
+            display: flex;
+            align-items: center;
+            border: 1px solid $light-border;
+            border-radius: $radius-sm;
+            overflow: hidden;
+            color: $light-accent-foreground;
+            transition: all 240ms ease;
+
+            p {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                user-select: none;
+            }
+
+            input {
+                min-height: 28px;
+                width: 100%;
+                outline: none;
+                border: none;
+            }
+        }
+    }
+
+    &.focus {
+        .InputProvider {
+            width: 100%;
+            max-width: 500px;
+            max-height: 30px;
+            display: flex;
+            align-items: center;
+            border: 1px solid $dark-border;
+            border-radius: $radius-sm;
+            overflow: hidden;
+            color: $light-accent-foreground;
+        }
+    }
+}
+
+// contanedor update media
+.update-media {
+  width: 100%;
+  max-width: $max-width-4xl;
+//   margin: 0 auto;
+  padding: $spacing-3 0;
+
+  // Área de drop
+  &__drop-area {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    border: 2px dashed $light-border;
+    border-radius: $radius-lg;
+    background-color: $light-background;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    overflow: hidden;
+    @include transition(all, $transition-base);
+
+    &:hover {
+      border-color: $light-chart-2;
+    }
+
+    &--has-image:hover {
+      border-color: $light-border;
+    }
+  }
+
+  // Placeholder cuando no hay imagen
+  &__placeholder {
+    position: absolute;
+    inset: 0;
+    @include flex-center;
+    flex-direction: column;
+    background-color: $light-secondary;
+    @include transition(background-color, $transition-base);
+
+    .update-media__drop-area:hover & {
+      background-color: $light-accent;
+    }
+  }
+
+  &__placeholder-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: $light-muted-foreground;
+    margin-bottom: $spacing-2;
+  }
+
+  &__placeholder-title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $light-foreground;
+    margin: 0;
+  }
+
+  &__placeholder-subtitle {
+    font-size: $font-size-xs;
+    color: $light-muted-foreground;
+    margin-top: $spacing-1;
+  }
+
+  // Overlay cuando hay imagen
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    @include flex-center;
+    background-color: rgba(0, 0, 0, 0);
+    @include transition(background-color, $transition-base);
+    opacity: 0;
+
+    .update-media__drop-area:hover & {
+      background-color: rgba(0, 0, 0, 0.3);
+      opacity: 1;
+    }
+  }
+
+  &__overlay-text {
+    color: $light-primary-foreground;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    margin: 0;
+  }
+
+  // Modal backdrop
+  &__modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    @include flex-center;
+    z-index: $z-index-modal-backdrop;
+    padding: $spacing-4;
+  }
+
+  // Modal
+  &__modal {
+    background-color: $light-card;
+    border-radius: $radius-lg;
+    width: 100%;
+    max-width: $max-width-4xl;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: $shadow-2xl;
+  }
+
+  // Modal header
+  &__modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-4;
+    border-bottom: 1px solid $light-border;
+  }
+
+  &__modal-title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $light-card-foreground;
+    margin: 0;
+  }
+
+  &__close-button {
+    padding: $spacing-2;
+    background: none;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    color: $light-foreground;
+    @include transition(background-color, $transition-fast);
+    @include flex-center;
+
+    &:hover {
+      background-color: $light-secondary;
+    }
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  // Tabs
+  &__tabs {
+    display: flex;
+    border-bottom: 1px solid $light-border;
+  }
+
+  &__tab {
+    flex: 1;
+    padding: $spacing-3 $spacing-4;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $light-muted-foreground;
+    cursor: pointer;
+    @include transition(all, $transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+
+    &:hover {
+      color: $light-foreground;
+    }
+
+    &--active {
+      color: $light-chart-2;
+      border-bottom-color: $light-chart-2;
+    }
+  }
+
+  &__tab-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  // Modal content
+  &__modal-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-6;
+  }
+
+  // Gallery
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-4;
+
+    @include responsive($breakpoint-md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__gallery-item {
+    aspect-ratio: 1;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    @include transition(all, $transition-fast);
+
+    &:hover {
+      border-color: $light-chart-2;
+      transform: scale(1.05);
+    }
+  }
+
+  &__gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  // Upload section
+  &__upload-section {
+    @include flex-center;
+    flex-direction: column;
+  }
+
+  &__upload-label {
+    width: 100%;
+    max-width: $max-width-md;
+  }
+
+  &__upload-area {
+    border: 2px dashed $light-border;
+    border-radius: $radius-lg;
+    padding: $spacing-12;
+    text-align: center;
+    cursor: pointer;
+    @include transition(all, $transition-fast);
+
+    &:hover {
+      border-color: $light-chart-2;
+      background-color: $light-secondary;
+    }
+  }
+
+  &__upload-icon {
+    width: 4rem;
+    height: 4rem;
+    color: $light-muted-foreground;
+    margin: 0 auto $spacing-4;
+  }
+
+  &__upload-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    color: $light-foreground;
+    margin: 0 0 $spacing-2 0;
+  }
+
+  &__upload-subtitle {
+    font-size: $font-size-sm;
+    color: $light-muted-foreground;
+    margin: 0;
+  }
+
+  &__upload-input {
+    display: none;
+  }
+
+  // Preview
+  &__preview {
+    width: 100%;
+    max-width: $max-width-2xl;
+  }
+
+  &__preview-image-wrapper {
+    border-radius: $radius-lg;
+    overflow: hidden;
+    margin-bottom: $spacing-4;
+    border: 1px solid $light-border;
+  }
+
+  &__preview-image {
+    width: 100%;
+    height: auto;
+    max-height: 24rem;
+    object-fit: contain;
+    display: block;
+  }
+
+  &__preview-actions {
+    display: flex;
+    gap: $spacing-3;
+    justify-content: flex-end;
+  }
+
+  // Buttons
+  &__button {
+    padding: $spacing-2 $spacing-6;
+    border-radius: $radius-lg;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    @include transition(all, $transition-fast);
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &--secondary {
+      background-color: transparent;
+      border: 1px solid $light-border;
+      color: $light-foreground;
+
+      &:hover:not(:disabled) {
+        background-color: $light-secondary;
+      }
+    }
+
+    &--primary {
+      background-color: $light-chart-2;
+      border: none;
+      color: $light-primary-foreground;
+
+      &:hover:not(:disabled) {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &__button-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  // Spinner
+  &__spinner {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid $light-primary-foreground;
+    border-top-color: transparent;
+    border-radius: $radius-full;
+    animation: spin 0.6s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// Input Search
+// input-search.scss
+.input-search {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  width: 100%;
+  max-width: 250px;
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  &__icon {
+    position: absolute;
+    left: $spacing-3;
+    color: $light-muted-foreground;
+    pointer-events: none;
+    transition: color $transition-base $transition-ease;
+
+    @include dark-mode {
+      color: $dark-muted-foreground;
+    }
+  }
+
+  &__field {
+    width: 100%;
+    padding: $spacing-1 $spacing-10 $spacing-1 $spacing-10;
+    font-family: $font-family-sans;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-normal;
+    color: $light-foreground;
+    background-color: $light-background;
+    border: 1px solid $light-border;
+    border-radius: $radius-lg;
+    outline: none;
+    transition: all $transition-base $transition-ease;
+
+    &::placeholder {
+      color: $light-muted-foreground;
+    }
+
+    &:focus {
+      border-color: $light-ring;
+      box-shadow: 0 0 0 3px rgba(113, 113, 122, 0.1);
+    }
+
+
+    @include dark-mode {
+      color: $dark-foreground;
+      background-color: $dark-background;
+      border-color: $dark-border;
+
+      &::placeholder {
+        color: $dark-muted-foreground;
+      }
+
+      &:focus {
+        border-color: $dark-ring;
+        box-shadow: 0 0 0 3px rgba(163, 163, 163, 0.1);
+      }
+    }
+  }
+
+  &__clear {
+    position: absolute;
+    right: $spacing-2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-normal;
+    color: $light-muted-foreground;
+    background: transparent;
+    border: none;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: all $transition-fast $transition-ease;
+
+    &:hover {
+      color: $light-foreground;
+      background-color: $light-muted;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    @include dark-mode {
+      color: $dark-muted-foreground;
+
+      &:hover {
+        color: $dark-foreground;
+        background-color: $dark-muted;
+      }
+    }
+  }
+
+  &__sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 30px;
+    padding: $spacing-2;
+    color: $light-muted-foreground;
+    background-color: $light-background;
+    border: 1px solid $light-border;
+    border-radius: $radius-lg;
+    cursor: pointer;
+    font-size: .8rem !important;
+    transition: all $transition-base $transition-ease;
+
+    &:hover {
+      color: $light-foreground;
+      border-color: $light-ring;
+      background-color: $light-muted;
+    }
+
+    &.active {
+      color: $light-primary-foreground;
+      background-color: $light-primary;
+      border-color: $light-primary;
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    svg {
+      transition: transform $transition-base $transition-ease;
+    }
+
+    @include dark-mode {
+      color: $dark-muted-foreground;
+      background-color: $dark-background;
+      border-color: $dark-border;
+
+      &:hover {
+        color: $dark-foreground;
+        border-color: $dark-ring;
+        background-color: $dark-muted;
+      }
+
+      &.active {
+        color: $dark-primary-foreground;
+        background-color: $dark-primary;
+        border-color: $dark-primary;
+      }
+    }
+  }
+
+  // Responsive
+  @include responsive($breakpoint-sm) {
+    max-width: 550px;
+  }
+}
+
+// Confirm dialog
+.confirm-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $z-index-modal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-4;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn $transition-base $transition-ease;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: $max-width-md;
+    background-color: $light-card;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-2xl;
+    animation: slideUp $transition-base $transition-ease;
+    overflow: hidden;
+  }
+
+  &__header {
+    padding: $spacing-6 $spacing-6 $spacing-4;
+    border-bottom: 1px solid $light-border;
+
+    h3 {
+      margin: 0;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semibold;
+      color: $light-foreground;
+    }
+  }
+
+  &__body {
+    padding: $spacing-6;
+
+    p {
+      margin: 0;
+      font-size: $font-size-base;
+      line-height: $line-height-relaxed;
+      color: $light-muted-foreground;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    gap: $spacing-3;
+    padding: $spacing-4 $spacing-6 $spacing-6;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    padding: $spacing-2 $spacing-6;
+    font-family: $font-family-sans;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: all $transition-base $transition-ease;
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &--cancel {
+      color: $light-foreground;
+      background-color: $light-secondary;
+      border: 1px solid $light-border;
+      
+      &:hover {
+        background-color: $light-accent;
+        border-color: $light-ring;
+      }
+    }
+
+    &--confirm {
+      color: $light-primary-foreground;
+      background-color: $light-primary;
+      
+      &:hover {
+        background-color: $light-ring;
+      }
+    }
+  }
+
+  // Responsive
+  @include responsive($breakpoint-sm) {
+    &__content {
+      max-width: $max-width-lg;
+    }
+  }
+
+  // Animaciones
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

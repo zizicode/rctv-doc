@@ -1,0 +1,213 @@
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 4rem 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar body";
+  height: 100vh;
+
+  .header {
+    grid-area: header;
+    background: $light-background;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 5px;
+    border-bottom: 1px solid $light-border;
+
+    h1 {
+      width: 100%;
+      font-size: 1.1rem;
+      color: $light-secondary-foreground;
+      font-weight: 600;
+    }
+
+    .logout{
+      min-width: 70px;
+      height: 30px;
+      display: flex;
+      gap: .25rem;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+      background-color: transparent;
+      border: 1px solid $light-border;
+      color: #222;
+      cursor: pointer;
+      border-radius: $radius-sm;
+      transition: all 230ms ease;
+      &:hover{
+        background-color: $light-destructive;
+        color: $light-primary-foreground;
+      }
+    }
+
+    button.updated{
+      min-width: 34px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #222;
+      color: white;
+      border-radius: $radius-sm;
+      cursor: pointer;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    button.updated.on svg {
+      animation: spin 0.8s linear infinite; // velocidad rápida
+    }
+
+
+    .menu-btn {
+      display: none;
+      opacity: 0;
+    }
+
+
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+    background: $dark-foreground;
+    color: $dark-sidebar;
+    border-right: 1px solid $light-border;
+    position: relative;
+    transition: transform 0.3s ease;
+
+    h2 {
+      height: 4rem;
+      border-bottom: 1px solid $light-border;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 1.2rem;
+      padding: 1rem;
+    }
+
+    nav ul {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+
+      li {
+        width: 100%;
+        display: flex;
+
+        a {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          padding: 10px 12px;
+          margin-bottom: 4px;
+          color: black;
+          border-radius: $radius-sm;
+          gap: 10px;
+
+          &:hover,
+          &.active {
+            background-color: $light-sidebar-accent;
+          }
+
+          span {
+            font-size: .9rem;
+          }
+
+          svg {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+
+    .footer-sidebar {
+      position: absolute;
+      height: 3rem;
+      width: 100%;
+      bottom: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid $light-border;
+
+      p {
+        font-size: .7rem;
+        color: $light-muted-foreground;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .dashboard-body {
+    grid-area: body;
+    background: $light-background;
+    padding: 1.5rem;
+    overflow-y: auto; // scroll interno
+    overflow-x: hidden;
+    padding-bottom: 5rem;
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas:
+      "header"
+      "body";
+
+    .header {
+      .menu-btn {
+        width: 2rem;
+        height: 2rem;
+        border-radius: $radius-md;
+        border: 1px solid $light-border;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        color: #222 !important;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        cursor: pointer;
+        opacity: 1;
+      }
+    }
+
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      transform: translateX(-100%);
+      z-index: 1000;
+
+      &.open {
+        transform: translateX(0);
+      }
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 900;
+    }
+  }
+}

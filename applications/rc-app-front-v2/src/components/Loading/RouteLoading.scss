@@ -1,0 +1,46 @@
+
+.route-loading {
+  position: fixed;
+  inset: 0;
+  background: $bg-primary;
+  z-index: $z-modal-backdrop;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s $ease-in-out;
+  opacity: 9999999999;
+
+  &.fade-out {
+    opacity: 0;
+  }
+
+  &__content {
+    text-align: center;
+  }
+
+  &__logo {
+    width: 100px;
+    margin-bottom: 1rem;
+    transition: opacity 0.3s $ease-in-out;
+  }
+
+  &.fade-out .route-loading__logo {
+    opacity: 0;
+  }
+
+  &__spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid $primary-100;
+    border-top-color: $primary-600;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+    margin: 0 auto;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

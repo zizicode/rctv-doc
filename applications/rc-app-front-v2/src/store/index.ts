@@ -1,1 +1,1 @@
-export * from './posts.store';
+export * from './data.store';

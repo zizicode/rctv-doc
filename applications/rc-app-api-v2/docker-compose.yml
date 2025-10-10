@@ -1,0 +1,21 @@
+services:
+  api-rest:
+    build: .
+    container_name: rctv_api_dev
+    restart: always
+    ports:
+      - "3002:3002"
+    environment:
+      POST: 3002
+      DB_HOST: db
+      DB_PORT: 5433
+      DB_USER: rctv
+      DB_PASSWORD: rctv@01
+      DB_NAME: media_db
+      JWT_EXPIRES_IN: 7d
+      JWT_SECRET: esamima
+    volumes:
+      - ./api/media:/app/media
+
+volumes:
+  db_data:

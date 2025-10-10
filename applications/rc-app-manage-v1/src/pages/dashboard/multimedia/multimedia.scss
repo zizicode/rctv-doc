@@ -1,0 +1,550 @@
+.multimedia-page {
+    padding: $spacing-1;
+    background-color: $light-background;
+  
+    @include responsive($breakpoint-md) {
+      padding: $spacing-1;
+    }
+  
+    // ============================================
+    // HEADER
+    // ============================================
+  
+    &__header {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-4;
+      margin-bottom: $spacing-8;
+  
+      @include responsive($breakpoint-lg) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  
+    &__header-content {
+      flex: 1;
+    }
+  
+    &__title {
+      font-size: $font-size-3xl;
+      font-weight: $font-weight-bold;
+      color: $light-foreground;
+      margin: 0 0 $spacing-2 0;
+      line-height: $line-height-tight;
+    }
+  
+    &__subtitle {
+      font-size: $font-size-base;
+      color: $light-muted-foreground;
+      margin: 0;
+    }
+  
+    &__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-3;
+      align-items: center;
+    }
+  
+    // ============================================
+    // BOTONES
+    // ============================================
+  
+    &__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: $spacing-2;
+      padding: $spacing-3 $spacing-4;
+      border: none;
+      border-radius: $radius-lg;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      font-family: $font-family-sans;
+      cursor: pointer;
+      @include transition(all);
+      white-space: nowrap;
+  
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+  
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+  
+      &--primary {
+        background-color: $light-primary;
+        color: $light-primary-foreground;
+  
+        &:hover:not(:disabled) {
+          background-color: oklch(0.3 0 0);
+        }
+  
+        &:active:not(:disabled) {
+          background-color: oklch(0.15 0 0);
+        }
+      }
+  
+      &--secondary {
+        background-color: $light-secondary;
+        color: $light-secondary-foreground;
+        border: 1px solid $light-border;
+  
+        &:hover:not(:disabled) {
+          background-color: $light-accent;
+        }
+  
+        &:active:not(:disabled) {
+          background-color: oklch(0.95 0 0);
+        }
+      }
+  
+      &--danger {
+        background-color: $light-destructive;
+        color: $light-primary-foreground;
+  
+        &:hover:not(:disabled) {
+          background-color: oklch(0.5 0.245 27.325);
+        }
+  
+        &:active:not(:disabled) {
+          background-color: oklch(0.45 0.245 27.325);
+        }
+      }
+    }
+  
+    // ============================================
+    // TABS
+    // ============================================
+  
+    &__tabs {
+      display: flex;
+      gap: $spacing-2;
+      margin-bottom: $spacing-6;
+      border-bottom: 1px solid $light-border;
+      overflow-x: auto;
+      padding-bottom: $spacing-1;
+  
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        background-color: $light-muted;
+        border-radius: $radius-full;
+      }
+    }
+  
+    &__tab {
+      display: flex;
+      align-items: center;
+      gap: $spacing-2;
+      padding: $spacing-3 $spacing-4;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: $light-muted-foreground;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      font-family: $font-family-sans;
+      cursor: pointer;
+      white-space: nowrap;
+      @include transition(all);
+  
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+  
+      &:hover {
+        color: $light-foreground;
+        background-color: $light-accent;
+        border-radius: $radius-md $radius-md 0 0;
+      }
+  
+      &--active {
+        color: $light-primary;
+        border-bottom-color: $light-primary;
+      }
+    }
+  
+    // ============================================
+    // GALERÍA
+    // ============================================
+  
+    &__gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: $spacing-4;
+  
+      @include responsive($breakpoint-md) {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: $spacing-6;
+      }
+    }
+  
+    &__empty {
+      grid-column: 1 / -1;
+      @include flex-center;
+      flex-direction: column;
+      gap: $spacing-4;
+      padding: $spacing-16 $spacing-4;
+      text-align: center;
+    }
+  
+    &__empty-icon {
+      width: 4rem;
+      height: 4rem;
+      color: $light-muted-foreground;
+      opacity: 0.5;
+    }
+  
+    &__empty-text {
+      font-size: $font-size-lg;
+      color: $light-muted-foreground;
+      margin: 0;
+    }
+  
+    // ============================================
+    // ITEMS DE GALERÍA
+    // ============================================
+  
+    &__item {
+      position: relative;
+      background-color: $light-card;
+      border: 1px solid $light-border;
+      border-radius: $radius-lg;
+      overflow: hidden;
+      @include transition(all);
+  
+      &:hover {
+        box-shadow: $shadow-md;
+        border-color: $light-ring;
+  
+        .multimedia-page__item-delete {
+          opacity: 1;
+        }
+      }
+  
+      &--selected {
+        border-color: $light-primary;
+        box-shadow: 0 0 0 2px $light-primary;
+      }
+    }
+  
+    &__checkbox {
+      position: absolute;
+      top: $spacing-2;
+      left: $spacing-2;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background-color: rgba(255, 255, 255, 0.95);
+      border: 1px solid $light-border;
+      border-radius: $radius-md;
+      cursor: pointer;
+      @include transition(all);
+  
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: $light-primary;
+      }
+  
+      &:hover {
+        background-color: $light-primary;
+        
+        svg {
+          color: $light-primary-foreground;
+        }
+      }
+    }
+  
+    &__item-preview {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background-color: $light-muted;
+      overflow: hidden;
+    }
+  
+    &__item-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    &__item-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    &__item-info {
+      padding: $spacing-3;
+    }
+  
+    &__item-name {
+      margin: 0 0 $spacing-1 0;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      color: $light-card-foreground;
+      @include truncate;
+    }
+  
+    &__item-meta {
+      margin: 0;
+      font-size: $font-size-xs;
+      color: $light-muted-foreground;
+    }
+  
+    &__item-delete {
+      position: absolute;
+      top: $spacing-2;
+      right: $spacing-2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background-color: rgba(255, 255, 255, 0.95);
+      border: 1px solid $light-border;
+      border-radius: $radius-md;
+      cursor: pointer;
+      opacity: 0;
+      @include transition(all);
+  
+      svg {
+        width: 1rem;
+        height: 1rem;
+        color: $light-destructive;
+      }
+  
+      &:hover {
+        background-color: $light-destructive;
+        border-color: $light-destructive;
+  
+        svg {
+          color: $light-primary-foreground;
+        }
+      }
+    }
+  
+    // ============================================
+    // MODAL
+    // ============================================
+  
+    &__modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      @include flex-center;
+      z-index: $z-index-modal-backdrop;
+      padding: $spacing-4;
+    }
+  
+    &__modal {
+      background-color: $light-card;
+      border-radius: $radius-xl;
+      box-shadow: $shadow-2xl;
+      width: 100%;
+      max-width: $max-width-4xl;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+  
+    &__modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: $spacing-6;
+      border-bottom: 1px solid $light-border;
+    }
+  
+    &__modal-title {
+      margin: 0;
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-bold;
+      color: $light-card-foreground;
+    }
+  
+    &__modal-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background: none;
+      border: none;
+      border-radius: $radius-md;
+      cursor: pointer;
+      color: $light-muted-foreground;
+      @include transition(all);
+  
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+  
+      &:hover {
+        background-color: $light-accent;
+        color: $light-foreground;
+      }
+    }
+  
+    &__modal-content {
+      flex: 1;
+      padding: $spacing-6;
+      overflow-y: auto;
+    }
+  
+    &__modal-footer {
+      display: flex;
+      gap: $spacing-3;
+      justify-content: flex-end;
+      padding: $spacing-6;
+      border-top: 1px solid $light-border;
+    }
+  
+    // ============================================
+    // DROP ZONE
+    // ============================================
+  
+    &__drop-zone {
+      border: 2px dashed $light-border;
+      border-radius: $radius-lg;
+      padding: $spacing-12;
+      text-align: center;
+      cursor: pointer;
+      @include transition(all);
+  
+      &:hover,
+      &--dragging {
+        border-color: $light-primary;
+        background-color: $light-accent;
+      }
+    }
+  
+    &__drop-zone-icon {
+      width: 3rem;
+      height: 3rem;
+      margin: 0 auto $spacing-4;
+      color: $light-muted-foreground;
+    }
+  
+    &__drop-zone-text {
+      margin: 0 0 $spacing-2 0;
+      font-size: $font-size-base;
+      font-weight: $font-weight-medium;
+      color: $light-foreground;
+    }
+  
+    &__drop-zone-hint {
+      margin: 0;
+      font-size: $font-size-sm;
+      color: $light-muted-foreground;
+    }
+  
+    &__file-input {
+      display: none;
+    }
+  
+    // ============================================
+    // PREVIEW
+    // ============================================
+  
+    &__preview {
+      margin-top: $spacing-6;
+    }
+  
+    &__preview-title {
+      margin: 0 0 $spacing-4 0;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $light-card-foreground;
+    }
+  
+    &__preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: $spacing-4;
+    }
+  
+    &__preview-item {
+      position: relative;
+      background-color: $light-muted;
+      border: 1px solid $light-border;
+      border-radius: $radius-lg;
+      overflow: hidden;
+    }
+  
+    &__preview-remove {
+      position: absolute;
+      top: $spacing-2;
+      right: $spacing-2;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      background-color: rgba(255, 255, 255, 0.95);
+      border: 1px solid $light-border;
+      border-radius: $radius-md;
+      cursor: pointer;
+      @include transition(all);
+  
+      svg {
+        width: 1rem;
+        height: 1rem;
+        color: $light-destructive;
+      }
+  
+      &:hover {
+        background-color: $light-destructive;
+        border-color: $light-destructive;
+  
+        svg {
+          color: $light-primary-foreground;
+        }
+      }
+    }
+  
+    &__preview-image,
+    &__preview-video {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+  
+    &__preview-info {
+      padding: $spacing-3;
+      background-color: $light-card;
+    }
+  
+    &__preview-name {
+      margin: 0 0 $spacing-1 0;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-medium;
+      color: $light-card-foreground;
+      @include truncate;
+    }
+  
+    &__preview-size {
+      margin: 0;
+      font-size: $font-size-xs;
+      color: $light-muted-foreground;
+    }
+  }
