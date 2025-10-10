@@ -2,7 +2,7 @@
 # Script de instalación y conexión automática de Tailscale en Ubuntu Server
 
 # --- CONFIGURACIÓN ---
-TAILSCALE_AUTH_KEY="coloca_aqui_tu_key"  # <-- reemplaza con tu key
+TAILSCALE_AUTH_KEY="tskey-auth-kXt2GTYri721CNTRL-KeTfzL5wD853AQuj2fzW85V41sXZxW6j3"  # <-- reemplaza con tu key
 
 # --- INSTALACIÓN ---
 echo "📦 Instalando Tailscale..."
