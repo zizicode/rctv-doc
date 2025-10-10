@@ -1,13 +1,25 @@
-import api from '@config/axios'
+import api from '../config/axios'
+import type { Post} from '../store/data.store'
+
+export interface Image {
+  id: string
+  url: string
+  title?: string
+  description?: string
+  createdAt: string
+}
+
+/** ----- Funciones del blog ----- */
 
 /**
  * Obtener todos los artículos del blog
  */
-export const getAllPosts = async (page = 1, limit = 10) => {
+export const getAllPosts = async (
+  page: number = 1,
+  limit: number = 10
+): Promise<Post[]> => {
   try {
-    const response = await api.get('/api/posts', {
-      params: { page, limit },
-    })
+    const response = await api.get('/api/posts', { params: { page, limit } })
     return response.data
   } catch (error) {
     console.error('Error al obtener artículos:', error)
@@ -18,7 +30,7 @@ export const getAllPosts = async (page = 1, limit = 10) => {
 /**
  * Obtener un artículo específico por slug
  */
-export const getPostBySlug = async (slug) => {
+export const getPostBySlug = async (slug: string): Promise<Post> => {
   try {
     const response = await api.get(`/api/posts/${slug}`)
     return response.data
@@ -31,7 +43,11 @@ export const getPostBySlug = async (slug) => {
 /**
  * Obtener artículos por categoría
  */
-export const getPostsByCategory = async (category, page = 1, limit = 10) => {
+export const getPostsByCategory = async (
+  category: string,
+  page: number = 1,
+  limit: number = 10
+): Promise<Post[]> => {
   try {
     const response = await api.get(`/api/posts/category/${category}`, {
       params: { page, limit },
@@ -46,7 +62,11 @@ export const getPostsByCategory = async (category, page = 1, limit = 10) => {
 /**
  * Obtener artículos por etiqueta
  */
-export const getPostsByTag = async (tag, page = 1, limit = 10) => {
+export const getPostsByTag = async (
+  tag: string,
+  page: number = 1,
+  limit: number = 10
+): Promise<Post[]> => {
   try {
     const response = await api.get(`/api/posts/tag/${tag}`, {
       params: { page, limit },
@@ -61,11 +81,12 @@ export const getPostsByTag = async (tag, page = 1, limit = 10) => {
 /**
  * Obtener todas las imágenes
  */
-export const getAllImages = async (page = 1, limit = 20) => {
+export const getAllImages = async (
+  page: number = 1,
+  limit: number = 20
+): Promise<Image[]> => {
   try {
-    const response = await api.get('/api/images', {
-      params: { page, limit },
-    })
+    const response = await api.get('/api/images', { params: { page, limit } })
     return response.data
   } catch (error) {
     console.error('Error al obtener imágenes:', error)
@@ -76,7 +97,7 @@ export const getAllImages = async (page = 1, limit = 20) => {
 /**
  * Obtener una imagen específica
  */
-export const getImageById = async (imageId) => {
+export const getImageById = async (imageId: string): Promise<Image> => {
   try {
     const response = await api.get(`/api/images/${imageId}`)
     return response.data
@@ -89,7 +110,11 @@ export const getImageById = async (imageId) => {
 /**
  * Buscar artículos
  */
-export const searchPosts = async (query, page = 1, limit = 10) => {
+export const searchPosts = async (
+  query: string,
+  page: number = 1,
+  limit: number = 10
+): Promise<Post[]> => {
   try {
     const response = await api.get('/api/posts/search', {
       params: { q: query, page, limit },
@@ -101,6 +126,7 @@ export const searchPosts = async (query, page = 1, limit = 10) => {
   }
 }
 
+/** ----- Export default ----- */
 export default {
   getAllPosts,
   getPostBySlug,

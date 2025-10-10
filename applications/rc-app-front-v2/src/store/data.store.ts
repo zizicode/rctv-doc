@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware"
 import api from "../config/axios"
 import { mockPost } from "../mocks/posts.mock"
 
-interface Post {
+export interface Post {
   id: string
   title: string
   slug: string
