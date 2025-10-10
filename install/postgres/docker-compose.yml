@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   db:
     image: postgres:16
@@ -15,6 +13,11 @@ services:
       - ./init/init.sql:/docker-entrypoint-initdb.d/init.sql
       - pgdata:/var/lib/postgresql/data
     networks:
-      - rc_media_net
+      rc_media_net:  # usa la red externa
+
 volumes:
   pgdata:
+
+networks:
+  rc_media_net:
+    external: true

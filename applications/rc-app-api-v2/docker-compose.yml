@@ -1,14 +1,14 @@
 services:
   api-rest:
     build: .
-    container_name: rctv_api_dev
+    container_name: rctv_api
     restart: always
     ports:
       - "3002:3002"
     environment:
       POST: 3002
       DB_HOST: db
-      DB_PORT: 5433
+      DB_PORT: 5432
       DB_USER: rctv
       DB_PASSWORD: rctv@01
       DB_NAME: media_db
@@ -17,7 +17,11 @@ services:
     volumes:
       - ./api/media:/app/media
     networks:
-      - rc_media_net
+      rc_media_net:  # usa la red externa
 
 volumes:
   db_data:
+
+networks:
+  rc_media_net:
+    external: true
