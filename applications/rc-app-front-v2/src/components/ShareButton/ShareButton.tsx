@@ -1,7 +1,7 @@
 import React from "react"
 import { Share2, Copy, MessageCircle } from "lucide-react"
 import { BsTwitterX, BsFacebook } from "react-icons/bs"
-import "./ShareButton.scss"
+import "./shareButton.scss"
 
 interface ShareButtonProps {
     slug: string
