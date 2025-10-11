@@ -7,8 +7,8 @@ services:
       - "3002:3002"
     environment:
       POST: 3002
-      DB_HOST: db
-      DB_PORT: 5432
+      DB_HOST: db            # nombre del servicio de Postgres
+      DB_PORT: 5432          # puerto interno de Postgres
       DB_USER: rctv
       DB_PASSWORD: rctv@01
       DB_NAME: media_db
@@ -17,10 +17,7 @@ services:
     volumes:
       - ./api/media:/app/media
     networks:
-      rc_media_net:  # usa la red externa
-
-volumes:
-  db_data:
+      - rc_media_net        # la misma red que tu contenedor DB
 
 networks:
   rc_media_net:

@@ -7,6 +7,7 @@ const router = express.Router()
 // Public routes
 router.get("/", postController.getAll)
 router.get("/:id", postController.getById)
+router.get("/share/:slug", postController.shareBySlug)
 router.get("/slug/:slug", postController.getBySlug)
 
 // Protected routes (require authentication)

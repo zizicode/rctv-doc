@@ -8,6 +8,7 @@ import AdBanner from "../../components/AdBanner/AdBanner"
 import NewsSearch from "../../components/NewsSearch/NewsSearch"
 import ContactForm from "../../components/ContactForm/ContactForm"
 import { useSmartNavigate } from "../../hooks/useSmartNavigate"
+import { formatViews } from "../../utils/formatViews"
 
 const HomePage: React.FC = () => {
   const useLink = useSmartNavigate()
@@ -63,7 +64,7 @@ const HomePage: React.FC = () => {
               </span>{" "}
               <span>
                 <RxPerson />
-                {latestPost.views}
+                {formatViews(latestPost.views as number)}
               </span>
             </p>
 

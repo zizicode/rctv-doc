@@ -14,7 +14,7 @@ import api from "../../config/axios";
 
 export const navLinks = [
   { label: "Inicio", href: "/" },
-  { label: "Blog", href: "/blog" },
+  { label: "Periódico digital", href: "/news" },
   { label: "Servicios", href: "/servicios" },
   { label: "Contacto", href: "/contacto" },
 ]

@@ -14,7 +14,7 @@ export default function AppRouter() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/news" element={<BlogPage />} />
           <Route path="/contacto" element={<ContactPage />} />
           <Route path="/post/:slug" element={<PostView />} />
           <Route path="*" element={<NotFound />} />

@@ -27,7 +27,7 @@ const BlogPage: React.FC = () => {
   return (
     <section className="BlogPage">
       <header className="BlogPage__header">
-        <h1>Blog & Noticias</h1>
+        <h1>Solo <span>Noticias</span></h1>
         <p>
           Explora las últimas publicaciones, tendencias y artículos del portal.
         </p>

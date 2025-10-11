@@ -1,0 +1,41 @@
+.share-buttons {
+    margin-top: 1.5rem;
+  
+    h4 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #222;
+    }
+  
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+  
+      a, button {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border: none;
+        padding: 7px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+        color: #fff;
+        text-decoration: none;
+  
+        &:hover {
+          opacity: 0.85;
+          transform: translateY(-1px);
+        }
+      }
+  
+      .native { background: #222; }
+      .whatsapp { background: #25d366; }
+      .facebook { background: #1877f2; }
+      .twitter { background: #1da1f2; }
+      .copy { background: #555; }
+    }
+  }
+  

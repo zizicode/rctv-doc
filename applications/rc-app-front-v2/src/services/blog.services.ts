@@ -32,7 +32,7 @@ export const getAllPosts = async (
  */
 export const getPostBySlug = async (slug: string): Promise<Post> => {
   try {
-    const response = await api.get(`/api/posts/${slug}`)
+    const response = await api.get(`/posts/slug/${slug}`)
     return response.data
   } catch (error) {
     console.error(`Error al obtener artículo: ${slug}`, error)

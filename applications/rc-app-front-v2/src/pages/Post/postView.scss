@@ -89,6 +89,10 @@
     font-size: 1rem;
     color: #333;
 
+    * ul, li, ol{
+      list-style: disc;
+    }
+
     h1 {
       line-height: 1.8rem;
       margin-bottom: 0.8rem;

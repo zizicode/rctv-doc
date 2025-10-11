@@ -1,5 +1,6 @@
 import { postModel } from "../models/postModel.js"
 
+
 export const postController = {
   async create(req, res) {
     try {
@@ -112,4 +113,75 @@ export const postController = {
       res.status(500).json({ error: "Error interno del servidor" })
     }
   },
+
+  async shareBySlug(req, res) {
+    try {
+      const { slug } = req.params;
+
+      // Buscar post por slug
+      const post = await postModel.findBySlug(slug);
+      const SITE_URL = process.env.NODE_ENV === "production"
+        ? "https://rodolfocordones.com"
+        : "http://localhost:3005"
+
+      if (!post) {
+        return res.status(404).send(`
+          <!DOCTYPE html>
+          <html lang="es">
+            <head>
+              <meta charset="utf-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <title>Artículo no encontrado</title>
+              <meta property="og:title" content="Artículo no encontrado" />
+              <meta property="og:description" content="Este artículo no está disponible." />
+            </head>
+            <body>
+              <p>El artículo no existe o fue eliminado.</p>
+            </body>
+          </html>
+        `);
+      }
+
+      const redirectUrl = `${SITE_URL}/post/${slug}`;
+      const imageUrl = post.cover_url?.startsWith("http")
+        ? post.cover_url
+        : `${SITE_URL}/media/${post.cover_url}`;
+
+      // HTML con meta tags OG para bots
+      const html = `
+        <!DOCTYPE html>
+        <html lang="es">
+          <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>${post.title}</title>
+  
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content="${post.title}" />
+            <meta property="og:description" content="${post.description}" />
+            <meta property="og:image" content="${imageUrl}" />
+            <meta property="og:url" content="${redirectUrl}" />
+  
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="${post.title}" />
+            <meta name="twitter:description" content="${post.description}" />
+            <meta name="twitter:image" content="${imageUrl}" />
+  
+            <meta name="robots" content="noindex,nofollow" />
+          </head>
+          <body>
+            <p>Redirigiendo al artículo...</p>
+            <script>window.location.replace("${redirectUrl}")</script>
+          </body>
+        </html>
+      `;
+
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.send(html);
+
+    } catch (error) {
+      console.error("Error en shareBySlug:", error);
+      res.status(500).send("Error interno del servidor");
+    }
+  }
 }
