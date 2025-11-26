@@ -10,6 +10,22 @@ import ContactForm from "../../components/ContactForm/ContactForm"
 import { useSmartNavigate } from "../../hooks/useSmartNavigate"
 import { formatViews } from "../../utils/formatViews"
 
+import ads1 from '/ads/1.jpeg'
+import ads2 from '/ads/2.jpeg'
+import ads3 from '/ads/3.jpeg'
+import ads4 from '/ads/4.jpeg'
+import ads5 from '/ads/5.jpeg'
+import ads6 from '/ads/6.jpeg'
+
+const ads = [
+  { url: ads1 },
+  { url: ads2 }, // sin link
+  { url: ads3 }, // sin link
+  { url: ads4 }, // sin link
+  { url: ads5 },
+  { url: ads6 }
+]
+
 const HomePage: React.FC = () => {
   const useLink = useSmartNavigate()
   const { data, loading } = useDataStore()
@@ -78,9 +94,9 @@ const HomePage: React.FC = () => {
         </div>
       )}
 
-      <AdBanner />
-      <NewsSearch />
-      <AdBanner />
+      <AdBanner items={ads}/>
+      <NewsSearch  />
+      <AdBanner items={ads} />
       <ContactForm />
     </div>
   )
