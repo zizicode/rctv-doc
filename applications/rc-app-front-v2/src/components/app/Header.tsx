@@ -29,7 +29,7 @@ export default function Header() {
   const location = useLocation();
   const useLink = useSmartNavigate()
   const { date, time } = useDateTime()
-  const [live, setLive] = useState<string | null>(null);
+  const [live, setLive] = useState<string | null>("https://player.castr.com/live_565cf300cbfa11f0bbf1f1b94fba7b6a");
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [viewLive, setViewLive] = useState(false);
 
